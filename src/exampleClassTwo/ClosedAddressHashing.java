@@ -3,64 +3,55 @@ import java.util.*;
 
 class ClosedAddressHashing {
 	
-	// Method to store each element of the input array into the hashtable 
-	// HashFunction: 
-	// 1 refers to folding method 
-	// 2 refers to modSizeTable Method	
-	
-	// Storing 
-	// Hashfunction must be specified
+	//	Method to store each element of the input array into the hash table
+	//	Takes in the parameters:
+	//	1. Hash table of size corresponding to load factor
+	//	2. Array of generate NRICs
+	//	3. Hash function used to generate index
 	
 	public final static void store(LinkedList<String>[] hashTable, String[] arr, int hashFunction) {
 		
 		
+		int i, j, index = 0; 
 		long start = 0, timeElapsed = 0;
 		
 		System.out.println("Storing:");
 		
-		for (int j =-10000; j<10000; j++) {
-			if (j == 0) {
-				start = System.nanoTime();
+		for (j =-10000; j<10000; j++) {		//	Ignore first 10,000 runs
+			
+			if (j == 0) {						//	Use the next 10,000 runs to find average
+				start = System.nanoTime();		//	Gives a nanosecond-precise time, relative to some arbitrary point
 			}
 			
-			int i, index; 
-			// uses mid square
-			if(hashFunction == 1) {
-				for (i = 0; i < arr.length; i++) {
+			for (i = 0; i < arr.length; i++) {
+				
+				if (hashFunction == 1) {				//	Mid Square Method
 					index = HashFunction.midSquare(arr[i], hashTable.length);
-					if (hashTable[index] == null)
-					{
-						hashTable[index] = new LinkedList<String>();
-					}
-					hashTable[index].add(arr[i]); 
-					// Add the nric to the linked list accordingly
 				}
+				else if (hashFunction == 2) {				//	Mid Square Method
+					index = HashFunction.modTabSize(arr[i], hashTable.length);
+				}
+				
+				if (hashTable[index] == null)	//	Only creates a new linked list once for each node
+				{
+					hashTable[index] = new LinkedList<String>();
+				}
+				hashTable[index].add(arr[i]);	//	Add the NRIC to the linked list accordingly
 			}
 			
-			// Uses modsizetab
-			else if(hashFunction == 2) {
-				for (i = 0; i< arr.length; i++) {
-					index = HashFunction.modTabSize(arr[i], hashTable.length);
-					if (hashTable[index] == null)
-					{
-						hashTable[index] = new LinkedList<String>();
-					}
-					hashTable[index].add(arr[i]); 
-					// Add the nric to the linked list accordingly
-				}
-			}
 			
 			
 		}
-		timeElapsed = System.nanoTime() - start;
-		System.out.println("Time = " + (timeElapsed/10000));
-		
-		// Create index according to the choice of the Hash Function
+		timeElapsed = System.nanoTime() - start;	//	Calculate the difference between start and stop time
+		System.out.println("Time = " + (timeElapsed/10000));	//	Take the average time elapsed
 	}
 	
 	
 	// Searching
-	// Hashfunction that was used to store must be specified
+	//	Takes in the parameters:
+	//	1. Hash table with stored NRICs
+	//	2. NRIC to search for (successful/unsuccessful)
+	//	3. Hash function used to generate index
 	public final static void search(LinkedList<String>[] hashTable, String nric, int hashFunction) {
 		
 		int i, index = 0;
@@ -79,7 +70,7 @@ class ClosedAddressHashing {
 				index = HashFunction.modTabSize(nric, hashTable.length);
 			}
 
-			if (hashTable[index] != null) {
+			if (hashTable[index] != null) {				//	Only checks if node is not empty
 				check = hashTable[index].contains(nric);
 			}
 			else {

@@ -4,35 +4,34 @@ import java.util.*;
 
 public class HashApp {
 	
-	public static final int DATA_SIZE = 300;
+	public static final int DATA_SIZE = 30;
 	
 	public static void main(String[] args) {
 		
-		// Create an Array of linked list
+		//	Create an array of linked lists
+		//	3 hash tables corresponding to 3 load factors
 		LinkedList<String> hashTable25[] = new LinkedList[DATA_SIZE*4]; 
 		LinkedList<String> hashTable50[] = new LinkedList[DATA_SIZE*2]; 	
 		LinkedList<String> hashTable75[] = new LinkedList[DATA_SIZE/3*4]; 
 		
-		// Store 
-		// Measures difference between start and stop time to find out the time elapsed 
-			
-		// Folding method
-		
+		//	Generate a set of random NRICs
 		String[] arr = new String[DATA_SIZE];
 		arr = generateRandomNumberArray(DATA_SIZE);
 		
-		String nric1 = arr[0]; // For searching usage (successful)
-		String nric2 = "S8000000A"; // For searching usage (unsuccessful)
+		//	2 NRICs to search for
+		String nric1 = arr[0];			// Successful
+		String nric2 = "S8000000A";		// Unsuccessful
 		
+		// Mid Square Method
 		System.out.println("1. Mid Square Method");
-		System.out.println("A) Load Factor: 0.25");
-		ClosedAddressHashing.store(hashTable25, arr, 1);
+		System.out.println("A) Load Factor: 0.25");			//	Load Factor
+		ClosedAddressHashing.store(hashTable25, arr, 1);	//	Store function
 		
 		System.out.println("Searching:");
 		System.out.println("i) Successful:");
-		ClosedAddressHashing.search(hashTable25, nric1, 1);
+		ClosedAddressHashing.search(hashTable25, nric1, 1);	// Successful search
 		System.out.println("ii) Unsuccessful:");
-		ClosedAddressHashing.search(hashTable25, nric2, 1);
+		ClosedAddressHashing.search(hashTable25, nric2, 1);	//	Unsuccessful search
 		
 		//
 		
@@ -56,8 +55,7 @@ public class HashApp {
 		System.out.println("ii) Unsuccessful:");
 		ClosedAddressHashing.search(hashTable75, nric2, 1);
 		
-		//// Mod Size Table
-		
+		//	Mod Size Table Method
 		System.out.println("\n2. Mod Size Table Method");
 		System.out.println("A) Load Factor: 0.25");
 		ClosedAddressHashing.store(hashTable25, arr, 2);
@@ -91,7 +89,7 @@ public class HashApp {
 		ClosedAddressHashing.search(hashTable75, nric2, 2);
 	}
 	
-	
+	//	Function to generate random NRICs
 	public static String[] generateRandomNumberArray(int size) {
 		  Random RNG = new Random();
 		  String[] arr = new String[size];
