@@ -80,6 +80,9 @@ class ClosedAddressHashing {
 		timeElapsed = System.nanoTime() - start;
 		System.out.println("Time = " + (timeElapsed/10000));
 		System.out.println("Found = " + check);
+		if (hashTable[index] != null) {
+			System.out.println(hashTable[index].toArray().length);
+		}
 	}	
 }
 
