@@ -2,7 +2,7 @@ package exampleClassTwo;
 
 public class HashFunction {
 	
-	//Mid Square Method
+	// Mid Square Method
 	public final static int midSquare(String nric, int tableSize) {
 		long index, icNumber;
 			
@@ -12,7 +12,7 @@ public class HashFunction {
 		return (int) index;
 	}
 	
-	// Mod Size Table Method
+	// Mod Table Size Method
 	public final static int modTabSize(String nric, int tableSize) {
 		int index, icNumber;
 			

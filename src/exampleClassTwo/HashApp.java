@@ -4,7 +4,7 @@ import java.util.*;
 
 public class HashApp {
 	
-	public static final int DATA_SIZE = 30;
+	public static final int DATA_SIZE = 600;
 	
 	public static void main(String[] args) {
 		
@@ -16,7 +16,7 @@ public class HashApp {
 		
 		//	Generate a set of random NRICs
 		String[] arr = new String[DATA_SIZE];
-		arr = generateRandomNumberArray(DATA_SIZE);
+		arr = generateBiasedNumberArray(DATA_SIZE);
 		
 		//	2 NRICs to search for
 		String nric1 = arr[0];			// Successful
@@ -24,6 +24,7 @@ public class HashApp {
 		
 		// Mid Square Method
 		System.out.println("1. Mid Square Method");
+
 		System.out.println("A) Load Factor: 0.25");			//	Load Factor
 		ClosedAddressHashing.store(hashTable25, arr, 1);	//	Store function
 		
@@ -99,6 +100,18 @@ public class HashApp {
 		  return arr;
 	}
 
+	public static String[] generateBiasedNumberArray(int size) {
+		  String[] arr = new String[size];
+		  for(int i = 0; i < size; i++) {
+			  if(i*size < 1000000) {
+				  arr[i] = "S" + (9000000 + i*size*12)+ 'A';
+			  } else {
+				  arr[i] = "S" + (9000000 + i*size*12 - 1000000) + 'A';
+			  }
+		}
+		  return arr;
+	}
+	
 }
 		
 	

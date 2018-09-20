@@ -6,7 +6,7 @@ class ClosedAddressHashing {
 	//	Method to store each element of the input array into the hash table
 	//	Takes in the parameters:
 	//	1. Hash table of size corresponding to load factor
-	//	2. Array of generate NRICs
+	//	2. Array of generated NRICs
 	//	3. Hash function used to generate index
 	
 	public final static void store(LinkedList<String>[] hashTable, String[] arr, int hashFunction) {
@@ -28,7 +28,7 @@ class ClosedAddressHashing {
 				if (hashFunction == 1) {				//	Mid Square Method
 					index = HashFunction.midSquare(arr[i], hashTable.length);
 				}
-				else if (hashFunction == 2) {				//	Mid Square Method
+				else if (hashFunction == 2) {				//	Mod Table Size Method
 					index = HashFunction.modTabSize(arr[i], hashTable.length);
 				}
 				
