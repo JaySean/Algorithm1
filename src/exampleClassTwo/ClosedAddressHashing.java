@@ -28,7 +28,9 @@ class ClosedAddressHashing {
 				{
 					hashTable[index] = new LinkedList<String>();
 				}
-				hashTable[index].add(arr[i]);	//	Add the NRIC to the linked list accordingly
+				if (!hashTable[index].contains(arr[i])) {
+					hashTable[index].add(arr[i]);	//	Add the NRIC to the linked list accordingly	
+				}
 			}
 }
 	
