@@ -19,8 +19,8 @@ public class HashApp {
 		arr = generateBiasedNumberArray(DATA_SIZE);
 		
 		//	2 NRICs to search for
-		String nric1 = arr[0];			// Successful
-		String nric2 = "S8000000A";		// Unsuccessful
+		String nric1 = arr[DATA_SIZE - 1];			// Successful
+		String nric2 = "S8000000A";					// Unsuccessful
 		
 		// Mid Square Method
 		System.out.println("1. Mid Square Method");
@@ -95,12 +95,31 @@ public class HashApp {
 		  Random RNG = new Random();
 		  String[] arr = new String[size];
 		  for(int i = 0; i < size; i++) {
-			  arr[i] = "S" + Integer.toString(9000000 + RNG.nextInt(9999999-9000000)) + Character.toString((char) (RNG.nextInt(26) + 'A'));
+			  arr[i] = "S" + Integer.toString(9000000 + RNG.nextInt(1000000)) + Character.toString((char) (RNG.nextInt(26) + 'A'));
 		}
 		  return arr;
 	}
 
+/*	public static String[] generateBiasedNumberArray(int size) {
+		Random RNG = new Random();
+		String[] arr = new String[size];
+		for (int i = 0; i < size; i++) {
+			arr[i] = "S" + Integer.toString(((90 + RNG.nextInt(10)) * 100000) + 54321 + 'A');
+		}
+		return arr;
+	}
+*/
+	
 	public static String[] generateBiasedNumberArray(int size) {
+		Random RNG = new Random();
+		String[] arr = new String[size];
+		for (int i = 0; i < size; i++) {
+			arr[i] = "S" + Integer.toString(((9000 + RNG.nextInt(1000)) * 1000) + 321 + 'A');
+		}
+		return arr;
+	}
+	
+/*	public static String[] generateBiasedNumberArray(int size) {
 		  String[] arr = new String[size];
 		  for(int i = 0; i < size; i++) {
 			  if(i*size < 1000000) {
@@ -111,6 +130,7 @@ public class HashApp {
 		}
 		  return arr;
 	}
+*/
 	
 }
 		
