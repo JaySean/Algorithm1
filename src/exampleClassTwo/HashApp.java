@@ -8,6 +8,9 @@ public class HashApp {
 	
 	public static void main(String[] args) {
 		
+		int j;
+		long start = 0, timeElapsed = 0;
+		
 		//	Create an array of linked lists
 		//	3 hash tables corresponding to 3 load factors
 		LinkedList<String> hashTable25[] = new LinkedList[DATA_SIZE*4]; 
@@ -27,6 +30,17 @@ public class HashApp {
 
 		System.out.println("A) Load Factor: 0.25");			//	Load Factor
 		ClosedAddressHashing.store(hashTable25, arr, 1);	//	Store function
+		System.out.println("Storing:");
+		for (j =-10000; j<10000; j++) {		//	Ignore first 10,000 runs
+			ClosedAddressHashing.store(hashTable25, arr, 1);
+			if (j == 0) {						//	Use the next 10,000 runs to find average
+				start = System.nanoTime();		//	Gives a nanosecond-precise time, relative to some arbitrary point
+			}
+		}
+		timeElapsed = System.nanoTime() - start;	//	Calculate the difference between start and stop time
+		System.out.println("Time = " + (timeElapsed/10000));	//	Take the average time elapsed
+	
+					
 		
 		System.out.println("Searching:");
 		System.out.println("i) Successful:");
@@ -38,6 +52,16 @@ public class HashApp {
 		
 		System.out.println("\nB) Load Factor: 0.50");
 		ClosedAddressHashing.store(hashTable50, arr, 1);
+		System.out.println("Storing:");
+		for (j =-10000; j<10000; j++) {		//	Ignore first 10,000 runs
+			ClosedAddressHashing.store(hashTable50, arr, 1);
+			if (j == 0) {						//	Use the next 10,000 runs to find average
+				start = System.nanoTime();		//	Gives a nanosecond-precise time, relative to some arbitrary point
+			}
+		}
+		timeElapsed = System.nanoTime() - start;	//	Calculate the difference between start and stop time
+		System.out.println("Time = " + (timeElapsed/10000));	//	Take the average time elapsed
+		
 		
 		System.out.println("Searching:");
 		System.out.println("i) Successful:");
@@ -49,6 +73,16 @@ public class HashApp {
 		
 		System.out.println("\nC) Load Factor: 0.75");
 		ClosedAddressHashing.store(hashTable75, arr, 1);
+		System.out.println("Storing:");
+		for (j =-10000; j<10000; j++) {		//	Ignore first 10,000 runs
+			ClosedAddressHashing.store(hashTable75, arr, 1);
+			if (j == 0) {						//	Use the next 10,000 runs to find average
+				start = System.nanoTime();		//	Gives a nanosecond-precise time, relative to some arbitrary point
+			}
+		}
+		timeElapsed = System.nanoTime() - start;	//	Calculate the difference between start and stop time
+		System.out.println("Time = " + (timeElapsed/10000));	//	Take the average time elapsed
+		
 		
 		System.out.println("Searching:");
 		System.out.println("i) Successful:");
@@ -60,6 +94,16 @@ public class HashApp {
 		System.out.println("\n2. Mod Size Table Method");
 		System.out.println("A) Load Factor: 0.25");
 		ClosedAddressHashing.store(hashTable25, arr, 2);
+		System.out.println("Storing:");
+		for (j =-10000; j<10000; j++) {		//	Ignore first 10,000 runs
+			ClosedAddressHashing.store(hashTable25, arr, 2);
+			if (j == 0) {						//	Use the next 10,000 runs to find average
+				start = System.nanoTime();		//	Gives a nanosecond-precise time, relative to some arbitrary point
+			}
+		}
+		timeElapsed = System.nanoTime() - start;	//	Calculate the difference between start and stop time
+		System.out.println("Time = " + (timeElapsed/10000));	//	Take the average time elapsed
+		
 		
 		System.out.println("Searching:");
 		System.out.println("i) Successful:");
@@ -71,6 +115,16 @@ public class HashApp {
 		
 		System.out.println("\nB) Load Factor: 0.50");
 		ClosedAddressHashing.store(hashTable50, arr, 2);
+		System.out.println("Storing:");
+		for (j =-10000; j<10000; j++) {		//	Ignore first 10,000 runs
+			ClosedAddressHashing.store(hashTable50, arr, 2);
+			if (j == 0) {						//	Use the next 10,000 runs to find average
+				start = System.nanoTime();		//	Gives a nanosecond-precise time, relative to some arbitrary point
+			}
+		}
+		timeElapsed = System.nanoTime() - start;	//	Calculate the difference between start and stop time
+		System.out.println("Time = " + (timeElapsed/10000));	//	Take the average time elapsed
+		
 		
 		System.out.println("Searching:");
 		System.out.println("i) Successful:");
@@ -82,6 +136,16 @@ public class HashApp {
 		
 		System.out.println("\nC) Load Factor: 0.75");
 		ClosedAddressHashing.store(hashTable75, arr, 2);
+		System.out.println("Storing:");
+		for (j =-10000; j<10000; j++) {		//	Ignore first 10,000 runs
+			ClosedAddressHashing.store(hashTable75, arr, 2);
+			if (j == 0) {						//	Use the next 10,000 runs to find average
+				start = System.nanoTime();		//	Gives a nanosecond-precise time, relative to some arbitrary point
+			}
+		}
+		timeElapsed = System.nanoTime() - start;	//	Calculate the difference between start and stop time
+		System.out.println("Time = " + (timeElapsed/10000));	//	Take the average time elapsed
+		
 		
 		System.out.println("Searching:");
 		System.out.println("i) Successful:");

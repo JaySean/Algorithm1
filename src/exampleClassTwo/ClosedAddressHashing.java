@@ -12,17 +12,9 @@ class ClosedAddressHashing {
 	public final static void store(LinkedList<String>[] hashTable, String[] arr, int hashFunction) {
 		
 		
-		int i, j, index = 0; 
-		long start = 0, timeElapsed = 0;
-		
-		System.out.println("Storing:");
-		
-		for (j =-10000; j<10000; j++) {		//	Ignore first 10,000 runs
-			
-			if (j == 0) {						//	Use the next 10,000 runs to find average
-				start = System.nanoTime();		//	Gives a nanosecond-precise time, relative to some arbitrary point
-			}
-			
+		int i, index = 0; 
+		Arrays.fill(hashTable, null);
+	
 			for (i = 0; i < arr.length; i++) {
 				
 				if (hashFunction == 1) {				//	Mid Square Method
@@ -38,13 +30,7 @@ class ClosedAddressHashing {
 				}
 				hashTable[index].add(arr[i]);	//	Add the NRIC to the linked list accordingly
 			}
-			
-			
-			
-		}
-		timeElapsed = System.nanoTime() - start;	//	Calculate the difference between start and stop time
-		System.out.println("Time = " + (timeElapsed/10000));	//	Take the average time elapsed
-	}
+}
 	
 	
 	// Searching
@@ -81,7 +67,7 @@ class ClosedAddressHashing {
 		System.out.println("Time = " + (timeElapsed/10000));
 		System.out.println("Found = " + check);
 		if (hashTable[index] != null) {
-			System.out.println(hashTable[index].toArray().length);
+			System.out.println("Key Comparisons = " + hashTable[index].toArray().length);
 		}
 	}	
 }
